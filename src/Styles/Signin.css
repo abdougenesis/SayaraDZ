@@ -1,0 +1,151 @@
+.formContainer,
+.descContainer,
+#startButton,
+#signinButton,
+.fieldDeco {
+  font-family: dosis;
+}
+
+#title {
+  font-weight: 600;
+  font-size: 57px;
+  color: #344750;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+#subTitle {
+  font-size: 35px;
+  color: #344750;
+  font-weight: 400;
+}
+
+#subTitle span {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#signinText {
+  font-size: 19px;
+  font-weight: 360;
+  color: #828a8e;
+}
+
+#signinText span {
+  text-transform: uppercase;
+}
+
+#startButton {
+  margin-top: 30px;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  background-color: white;
+  border-radius: 7px;
+  color: #344750;
+  font-size: 25px;
+  font-weight: 400;
+  border: none;
+  -webkit-box-shadow: 3px 0px 12px 0px rgba(0, 0, 0, 0.29);
+  -moz-box-shadow: 3px 0px 12px 0px rgba(0, 0, 0, 0.29);
+  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+}
+
+#signinButton {
+  text-align: center;
+  background-color: #ff782d;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 23px;
+  font-weight: 400;
+  width: 170px;
+  height: 60px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.descContainer {
+  margin: 15px 0 0 7%;
+  width: 40%;
+}
+
+.clipdiv {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  -webkit-clip-path: polygon(0 84%, 100% 39%, 100% 100%, 0 100%);
+  clip-path: polygon(0 84%, 100% 39%, 100% 100%, 0 100%);
+  background-image: linear-gradient(
+    to left bottom,
+    #ff782d,
+    #ff7124,
+    #ff6a1b,
+    #ff630f,
+    #ff5b00
+  );
+  position: absolute;
+  bottom: 0;
+}
+
+.flexContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.formContainer {
+  z-index: 20;
+  width: 30%;
+  border-radius: 7px;
+  background-color: white;
+  text-align: center;
+  -webkit-box-shadow: 2px 10px 20px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 2px 10px 20px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 2px 10px 20px 0px rgba(0, 0, 0, 0.16);
+  margin: 4% 0 0 10%;
+  padding-bottom: 10px;
+}
+
+.formContainer h2 {
+  margin: 5% auto;
+  padding: 0 0 5px 0;
+  font-size: 20px;
+  color: #58656b;
+  font-weight: 420;
+  border-bottom: 1.5px solid #ff782d;
+  width: 20%;
+}
+
+.formContainer img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+}
+
+.inputfield {
+  font-family: dosis;
+  padding: 10px;
+  border-radius: 5px;
+  background: #e8e8e8;
+  border: 0.3px solid #707070;
+  width: 95%;
+  height: 27px;
+}
+
+.fieldDeco {
+  padding: 0;
+  width: 80%;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.fieldDeco p {
+  color: #58656b;
+  font-size: 16px;
+  margin: 10px 0;
+}
