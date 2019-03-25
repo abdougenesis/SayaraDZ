@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import logo from "./logo.svg";
 import AuthService from "./components/loginComponents/AuthService";
 import withAuth from "./components/loginComponents/withAuth";
 

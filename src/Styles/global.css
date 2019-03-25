@@ -1,0 +1,112 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: dosis;
+  color: #344750;
+}
+.fullpage {
+  background-color: #f1f3f6;
+  height: 100%;
+  margin-left: 17%;
+}
+
+.sidebar {
+  background: white;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 17%;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+}
+
+.tomiddle {
+  text-align: center;
+}
+
+.userpicContainer {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.userpicContainer img {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.fonticon {
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.13);
+}
+
+.fontawsome {
+  color: #989393;
+}
+
+.sitetitle {
+  font-weight: 560;
+  text-align: center;
+  font-size: 27px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.subiconSelected {
+  color: #ff782d;
+  font-size: 14px;
+}
+
+.subtextSelected {
+  font-family: "Dosis";
+  font-size: 15;
+  font-weight: 500;
+  text-transform: "capitalize";
+  color: #ff782d;
+}
+
+.firstlist {
+  padding: 15px 0 15px 10%;
+  position: relative;
+  background-color: white !important;
+}
+
+.firstlist::after {
+  content: "";
+  width: 3px;
+  height: 100%;
+  background-color: #ff782d;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: 3px 0px 12px 0px #ff782d;
+  -moz-box-shadow: 3px 0px 12px 0px #ff782d;
+  box-shadow: 3px 0px 12px 0px #ff782d;
+}
+
+.firstlist:focus {
+  background-color: white !important;
+}
