@@ -36,6 +36,13 @@ const styles = {
     textTransform: "capitalize",
     color: "#ADBEC5"
   },
+  textSelected: {
+    fontFamily: "Dosis",
+    fontSize: 17,
+    fontWeight: 600,
+    textTransform: "capitalize",
+    color: "#344750"
+  },
   fulllist: {
     margin: "20px 0"
   },
@@ -57,6 +64,10 @@ const styles = {
     color: "#344750",
     fontSize: 14
   },
+  subIconSelected: {
+    color: "#ff782d",
+    fontSize: 14
+  },
   subtextSelected: {
     fontFamily: "Dosis",
     fontSize: 15,
@@ -74,6 +85,7 @@ class ListItemsContainer extends Component {
       submenu: true,
       simpleusers: simpleUserList
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   ouricons = {
@@ -83,7 +95,7 @@ class ListItemsContainer extends Component {
     com: LibraryBooks
   };
 
-  handleSubClick = targetTitle => {
+  handleClick = targetTitle => {
     let changesub = this.state.submenu;
     this.setState(state => {
       console.log(targetTitle);
@@ -103,13 +115,33 @@ class ListItemsContainer extends Component {
     });
   };
 
+  handleSubClick = (item, target) => {
+    if (!target.selected) {
+      this.setState(oldstate => {
+        const updatedSimple = oldstate.simpleusers.map(list => {
+          if (item === list) {
+            const newsubmenu = list.submenu.map(sub => {
+              if (sub === target) {
+                sub.selected = true;
+              } else sub.selected = false;
+              return sub;
+            });
+            return newsubmenu;
+          } else return list;
+        });
+        return {
+          simpleuser: updatedSimple
+        };
+      });
+    }
+  };
+
   render() {
     const { classes } = this.props;
     const workwith =
       this.state.pos === "simpleuser" ? this.state.simpleusers : null;
     const ourItems = workwith.map(item => {
       let IconToUse = this.ouricons[item.icon];
-      let func = item.submenu ? this.handleSubClick : () => {};
       let sub = item.submenu
         ? item.submenu.map(submenuitem => {
             return (
@@ -118,16 +150,22 @@ class ListItemsContainer extends Component {
                   button
                   className={classes.sublist}
                   selected={submenuitem.selected}
+                  onClick={() => this.handleSubClick(item, submenuitem)}
                 >
                   <ListItemIcon>
-                    <PanoramaFishEye classes={{ root: classes.subIcon }} />
+                    {submenuitem.selected ? (
+                      <Lens classes={{ root: classes.subIconSelected }} />
+                    ) : (
+                      <PanoramaFishEye classes={{ root: classes.subIcon }} />
+                    )}
                   </ListItemIcon>
                   <ListItemText
                     inset
                     primary={submenuitem.title}
                     classes={{
-                      primary: classes.subtext,
-                      dense: classes.subtextSelected
+                      primary: submenuitem.selected
+                        ? classes.subtextSelected
+                        : classes.subtext
                     }}
                   />
                 </ListItem>
@@ -142,7 +180,7 @@ class ListItemsContainer extends Component {
             button
             key={item.title}
             selected={item.selected}
-            onClick={() => this.handleSubClick(item.title)}
+            onClick={() => this.handleClick(item.title)}
             classes={{
               root: classes.firstlist,
               selected: "firstlist"
@@ -155,7 +193,7 @@ class ListItemsContainer extends Component {
               inset
               primary={item.title}
               classes={{
-                primary: classes.text
+                primary: item.selected ? classes.textSelected : classes.text
               }}
             />
           </ListItem>

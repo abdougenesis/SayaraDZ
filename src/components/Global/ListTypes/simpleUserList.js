@@ -26,19 +26,19 @@ const simpleUserList = [
     icon: "upload",
     selected: false,
     title: "uploader fichier",
-    submenu: 0
+    submenu: null
   },
   {
     icon: "play",
     selected: false,
     title: "simuler",
-    submenu: 0
+    submenu: null
   },
   {
     icon: "com",
     selected: false,
     title: "commandes",
-    submenu: 0
+    submenu: null
   }
 ];
 
