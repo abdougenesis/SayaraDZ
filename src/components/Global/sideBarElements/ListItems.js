@@ -1,5 +1,5 @@
 import React from "react";
-import "./../../Styles/global.css";
+import "./../../../Styles/global.css";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -7,12 +7,7 @@ import {
   PlayCircleFilled,
   Publish,
   Build,
-  LibraryBooks,
-  StarBorder,
-  Create,
-  Edit,
-  Lens,
-  PanoramaFishEye
+  LibraryBooks
 } from "@material-ui/icons";
 
 const ouricons = {

@@ -6,10 +6,10 @@ html {
   width: 100%;
   font-family: dosis;
   color: #344750;
+  background-color: #f1f3f6;
 }
 .fullpage {
   background-color: #f1f3f6;
-  height: 100%;
   margin-left: 17%;
 }
 

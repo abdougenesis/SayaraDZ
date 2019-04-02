@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import simpleUserList from "./ListTypes/simpleUserList";
 import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import Collapse from "@material-ui/core/Collapse";
-import "./../../Styles/global.css";
+
+import simpleUserList from "./ListTypes/simpleUserList";
+import "./../../../Styles/global.css";
 import styles from "./ListTypes/SimpleUserStyles";
 import ListItems from "./ListItems";
 import SubListItems from "./SubListItems";
@@ -71,9 +72,11 @@ class ListItemsContainer extends Component {
         ? item.submenu.map(submenuitem => {
             return (
               <SubListItems
+                key={submenuitem.title}
                 classes={classes}
                 submenuitem={submenuitem}
                 item={item}
+                handleSubClick={this.handleSubClick}
               />
             );
           })

@@ -10,7 +10,7 @@ function SubListItems(props) {
       button
       className={props.classes.sublist}
       selected={props.submenuitem.selected}
-      onClick={() => this.handleSubClick(props.item, props.submenuitem)}
+      onClick={() => props.handleSubClick(props.item, props.submenuitem)}
     >
       <ListItemIcon>
         {props.submenuitem.selected ? (

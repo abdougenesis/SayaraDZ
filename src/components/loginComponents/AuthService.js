@@ -16,7 +16,7 @@ export default class AuthService {
     formData.append("password", password);
 
     axiosDef
-      .post("/login", formData)
+      .post("/accounts", formData)
       .then(this._checkStatus)
       .then(res => res.json())
       .then(res => {

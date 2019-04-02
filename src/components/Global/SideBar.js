@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import ListItemsContainer from "./ListItemsContainer";
-import UserPic from "./UserPic";
+import ListItemsContainer from "./sideBarElements/ListItemsContainer";
+import UserPic from "./sideBarElements/UserPic";
 import "../../Styles/global.css";
 
 class SideBar extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div className="sidebar">

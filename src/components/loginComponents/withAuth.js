@@ -9,7 +9,7 @@ export default function withAuth(AuthComponent) {
       this.state = { user: null };
     }
 
-    /*componentWillMount() {
+    componentWillMount() {
       if (!Auth.loggedIn()) {
         this.props.history.replace("/login");
       } else {
@@ -23,7 +23,7 @@ export default function withAuth(AuthComponent) {
           this.props.history.replace("/login");
         }
       }
-    }*/
+    }
 
     render() {
       if (this.state.user) {
@@ -32,7 +32,6 @@ export default function withAuth(AuthComponent) {
         );
       } else {
         return <AuthComponent />;
-        return null;
       }
     }
   };
