@@ -4,7 +4,7 @@ const styles = {
   },
   listselected: {
     padding: "15px 0 15px 15%"
-  },
+  }, 
   text: {
     fontFamily: "Dosis",
     fontSize: 17,

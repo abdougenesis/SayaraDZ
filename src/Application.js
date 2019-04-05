@@ -3,6 +3,7 @@ import SideBar from "./components/Global/SideBar";
 import "./Styles/global.css";
 import "./FontLibrary";
 import ModelsContainer from "./components/managComponents/ManagModelComps/ModelsContainer";
+import ColorsContainer from "./components/managComponents/ManagColorComps/ColorsContainer";
 //import axios from "axios";
 
 class Application extends Component {
@@ -10,7 +11,8 @@ class Application extends Component {
     return (
       <div className="fullpage">
         <SideBar />
-        <ModelsContainer />
+        {/*<ModelsContainer />*/}
+        <ColorsContainer />
       </div>
     );
   }
