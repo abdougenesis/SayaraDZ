@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import ModelComp from "./ModelComp";
 import "./../ManagStyles.css";
 import axios from "axios";
+import Modelimage from "./../../../images/vwModele.jpg";
+import WarningDialog from "./WarningDialog";
+import ModifierModele from "./ModifierModele";
+import ModelHeader from "./ModelHeader";
+import AddDialog from "./AddDialog";
 
 //axios.defaults.baseURL = "http://74730854.ngrok.io/";
 
@@ -19,8 +24,12 @@ class ModelsContainer extends Component {
   constructor() {
     super();
     this.state = {
-      allModels: []
+      allModels: [],
+      openWarningDialog: false,
+      openModifierDialog: false,
+      openAddDialog: false
     };
+    this.handleOpenDeleteModele = this.handleOpenDeleteModele.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +42,29 @@ class ModelsContainer extends Component {
       });
   }
 
+  handleOpenDeleteModele() {
+    this.setState({ openWarningDialog: true });
+  }
+
+  handleCloseDeleteModele = () => {
+    this.setState({ openWarningDialog: false });
+  };
+
+  handleOpenModifierModele = () => {
+    this.setState({ openModifierDialog: true });
+  };
+
+  handleCloseModifierModele = () => {
+    this.setState({ openModifierDialog: false });
+  };
+
+  handleOpenAddModele = () => {
+    this.setState({ openAddDialog: true });
+  };
+  handleCloseAddModele = () => {
+    this.setState({ openAddDialog: false });
+  };
+
   render() {
     const models = this.state.allModels.map(model => (
       <ModelComp
@@ -42,7 +74,36 @@ class ModelsContainer extends Component {
         img={model.Image}
       />
     ));
-    return <div className="modelsContainer">{models}</div>;
+    //return <div className="modelsContainer">{models}</div>;
+    return (
+      <div className="managIndex">
+        <ModelHeader handleButton={this.handleOpenAddModele} />
+        <div className="modelsContainer">
+          <ModelComp
+            key="1"
+            code="m1"
+            name="pecanto"
+            img={Modelimage}
+            handleDelete={this.handleOpenDeleteModele}
+            handleModif={this.handleOpenModifierModele}
+          />
+          <WarningDialog
+            open={this.state.openWarningDialog}
+            handleClose={this.handleCloseDeleteModele}
+          />
+          <ModifierModele
+            open={this.state.openModifierDialog}
+            handleClose={this.handleCloseModifierModele}
+            name="test11"
+            code="code11"
+          />
+          <AddDialog
+            open={this.state.openAddDialog}
+            handleClose={this.handleCloseAddModele}
+          />
+        </div>
+      </div>
+    );
   }
 }
 

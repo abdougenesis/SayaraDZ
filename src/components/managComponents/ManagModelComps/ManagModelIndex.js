@@ -5,12 +5,7 @@ import "./../ManagStyles.css";
 
 class ManagModelIndex extends Component {
   render() {
-    return (
-      <div className="managIndex">
-        <ModelHeader />
-        <ModelsContainer />
-      </div>
-    );
+    return <ModelsContainer />;
   }
 }
 

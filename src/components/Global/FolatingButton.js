@@ -28,7 +28,11 @@ function FloatingButton(props) {
   const { classes } = props;
   return (
     <div>
-      <Button variant="contained" className={classes.button}>
+      <Button
+        variant="contained"
+        className={classes.button}
+        onClick={() => props.handleclick()}
+      >
         <AddIcon className={classes.icon} />
         ajouter
       </Button>

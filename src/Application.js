@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SideBar from "./components/Global/SideBar";
 import "./Styles/global.css";
 import "./FontLibrary";
-import ManagModelIndex from "./components/managComponents/ManagModelComps/ManagModelIndex";
+import ModelsContainer from "./components/managComponents/ManagModelComps/ModelsContainer";
 //import axios from "axios";
 
 class Application extends Component {
@@ -10,7 +10,7 @@ class Application extends Component {
     return (
       <div className="fullpage">
         <SideBar />
-        <ManagModelIndex />
+        <ModelsContainer />
       </div>
     );
   }

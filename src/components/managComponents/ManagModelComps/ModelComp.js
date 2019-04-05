@@ -55,10 +55,13 @@ function ModelComp(props) {
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button className={classes.button}>
+          <Button
+            className={classes.button}
+            onClick={() => props.handleDelete()}
+          >
             <DeleteIcon />
           </Button>
-          <Button aria-label="Edit">
+          <Button aria-label="Edit" onClick={() => props.handleModif()}>
             <Edit />
           </Button>
         </CardActions>
