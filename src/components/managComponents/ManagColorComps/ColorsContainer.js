@@ -11,7 +11,7 @@ import { withStyles } from "@material-ui/core/styles";
 const style = {
   list: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center"
   }
@@ -27,9 +27,9 @@ class ColorsContainer extends Component {
     };
   }
 
-  handleOpenDeleteColor() {
+  handleOpenDeleteColor = () => {
     this.setState({ openWarningDialog: true });
-  }
+  };
 
   handleCloseDeleteColor = () => {
     this.setState({ openWarningDialog: false });
@@ -76,14 +76,20 @@ class ColorsContainer extends Component {
           color={obj.Hex_Couleur}
           code={obj.Code_Couleur}
           handlesub={this.handleOpenSubMenu}
+          handleOpenDeleteColor={this.handleOpenDeleteColor}
+          handleOpenModifierColor={this.handleOpenModifierColor}
         />
       );
     });
+    const firstCol = ourColors.splice(0, (ourColors.length + 1) / 2);
     return (
       <div className="managIndex">
         <ColorHeader handleButton={this.handleOpenAddColor} />
         <div>
-          <List className={classes.list}>{ourColors}</List>
+          <List className={classes.list}>
+            <div className="colDiv">{firstCol}</div>
+            <div className="colDiv">{ourColors}</div>
+          </List>
           <WarningDialog
             open={this.state.openWarningDialog}
             handleClose={this.handleCloseDeleteColor}
