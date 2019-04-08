@@ -34,7 +34,7 @@ class ModelsContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://0d2035cc.ngrok.io/modele/")
+      .get("http://78d9ab04.ngrok.io/modele/")
       .then(res => res.data)
       .then(data => {
         this.setState({ allModels: data });

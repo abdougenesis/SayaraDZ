@@ -63,9 +63,15 @@ class ColorComp extends Component {
 
   handleOption = option => {
     this.handleClose();
+    let object = {
+      Code_Couleur: this.props.code,
+      Nom_Couleur: this.props.name,
+      Hex_Couleur: this.props.color,
+      Colore: this.props.sub
+    };
     option === "modifier"
-      ? this.props.handleOpenModifierColor()
-      : this.props.handleOpenDeleteColor();
+      ? this.props.handleOpenModifierColor(object)
+      : this.props.handleOpenDeleteColor(object);
   };
 
   render() {
