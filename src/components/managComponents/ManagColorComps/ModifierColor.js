@@ -8,20 +8,28 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import ChipInput from "material-ui-chip-input";
+import { withStyles } from "@material-ui/core/styles";
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
+const style = {
+  chips: {
+    width: "100%"
+  }
+};
+
 class ModifierColor extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      nom: this.props.obj.Nom_Couleur,
-      code: this.props.obj.Code_Couleur,
-      hexa: this.props.obj.Hex_Couleur,
-      models: this.props.obj.Colore
+      nom: "",
+      code: "",
+      hexa: "",
+      models: []
     };
+    console.log(this.state);
   }
 
   handleChangeField = event => {
@@ -61,6 +69,7 @@ class ModifierColor extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <Dialog
         TransitionComponent={Transition}
@@ -124,6 +133,7 @@ class ModifierColor extends Component {
             onAdd={chips => this.handleAdd(chips)}
             onDelete={chips => this.handleDelete(chips)}
             fullWidth
+            classes={{ inputRoot: classes.chips }}
           />
         </DialogContent>
         <DialogActions>
@@ -145,4 +155,4 @@ class ModifierColor extends Component {
   }
 }
 
-export default ModifierColor;
+export default withStyles(style)(ModifierColor);

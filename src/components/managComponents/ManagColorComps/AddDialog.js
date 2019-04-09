@@ -8,6 +8,13 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import ChipInput from "material-ui-chip-input";
+import { withStyles } from "@material-ui/core/styles";
+
+const style = {
+  chips: {
+    width: "100%"
+  }
+};
 
 class AjouterModele extends Component {
   constructor() {
@@ -51,6 +58,7 @@ class AjouterModele extends Component {
     });
   };
   render() {
+    const { classes } = this.props;
     return (
       <Dialog
         TransitionComponent={this.Transition}
@@ -104,6 +112,7 @@ class AjouterModele extends Component {
             onAdd={chips => this.handleAdd(chips)}
             onDelete={chips => this.handleDelete(chips)}
             fullWidth
+            classes={{ inputRoot: classes.chips }}
           />
         </DialogContent>
         <DialogActions>
@@ -125,4 +134,4 @@ class AjouterModele extends Component {
   }
 }
 
-export default AjouterModele;
+export default withStyles(style)(AjouterModele);

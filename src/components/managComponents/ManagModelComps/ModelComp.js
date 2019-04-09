@@ -36,6 +36,10 @@ const styles = {
 
 function ModelComp(props) {
   const { classes } = props;
+  let object = {
+    name: props.name,
+    code: props.code
+  };
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -61,7 +65,7 @@ function ModelComp(props) {
           >
             <DeleteIcon />
           </Button>
-          <Button aria-label="Edit" onClick={() => props.handleModif()}>
+          <Button aria-label="Edit" onClick={() => props.handleModif(object)}>
             <Edit />
           </Button>
         </CardActions>

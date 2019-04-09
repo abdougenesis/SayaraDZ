@@ -11,8 +11,8 @@ class Application extends Component {
     return (
       <div className="fullpage">
         <SideBar />
-        {/*<ModelsContainer />*/}
-        <ColorsContainer />
+        {<ModelsContainer />}
+        {/*<ColorsContainer />*/}
       </div>
     );
   }
