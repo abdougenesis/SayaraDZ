@@ -4,6 +4,7 @@ import "./Styles/global.css";
 import "./FontLibrary";
 import ModelsContainer from "./components/managComponents/ManagModelComps/ModelsContainer";
 import ColorsContainer from "./components/managComponents/ManagColorComps/ColorsContainer";
+import VersionsContainer from "./components/managComponents/ManagVersionComps/VersionsContainer";
 //import axios from "axios";
 
 class Application extends Component {
@@ -11,7 +12,8 @@ class Application extends Component {
     return (
       <div className="fullpage">
         <SideBar />
-        {<ModelsContainer />}
+        {<VersionsContainer />}
+        {/*<ModelsContainer />*/}
         {/*<ColorsContainer />*/}
       </div>
     );
