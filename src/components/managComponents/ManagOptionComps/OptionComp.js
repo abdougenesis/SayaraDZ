@@ -76,7 +76,7 @@ const styles = theme => ({
     margin: "0 !important"
   },
   chip: {
-    margin: 10
+    margin: 5
   }
 });
 
@@ -108,7 +108,7 @@ function OptionComp(props) {
           <div className={classes.columnOption}>{ourOptions}</div>
           <div className={classNames(classes.helper)}>
             <Typography variant="caption">
-              la liste des options compatible avec cette version
+              la liste des modeles associé a cette option
               <br />
             </Typography>
           </div>
@@ -117,14 +117,14 @@ function OptionComp(props) {
         <ExpansionPanelActions>
           <Button
             size="small"
-            onClick={() => props.handleOpenDeleteVersion(object)}
+            onClick={() => props.handleOpenDeleteOption(object)}
           >
             Supprimer
           </Button>
           <Button
             size="small"
             color="primary"
-            onClick={() => props.handleOpenModifierVersion(object)}
+            onClick={() => props.handleOpenModifierOption(object)}
           >
             Modifier
           </Button>

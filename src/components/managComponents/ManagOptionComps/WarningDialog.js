@@ -39,7 +39,7 @@ class WarningDialog extends Component {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            supprimer cette version en clickant sur supprimer sinon annuler
+            supprimer cette option en clickant sur supprimer sinon annuler
           </DialogContentText>
         </DialogContent>
         <DialogActions>

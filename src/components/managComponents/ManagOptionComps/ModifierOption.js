@@ -27,7 +27,7 @@ class ModifierOption extends Component {
       nom: "",
       code: "",
       image: "",
-      options: ["exemple"]
+      models: ["exemple"]
     };
     //console.log(this.state);
   }
@@ -40,10 +40,10 @@ class ModifierOption extends Component {
 
   handleAdd = chips => {
     this.setState(oldstate => {
-      let options = [...oldstate.options];
-      options.push(chips);
-      console.log(options);
-      return { options: options };
+      let models = [...oldstate.models];
+      models.push(chips);
+      console.log(models);
+      return { models: models };
     });
     console.log(chips);
   };
@@ -54,8 +54,8 @@ class ModifierOption extends Component {
 
   handleDelete = chips => {
     this.setState(oldstate => {
-      let options = this.removeElement(oldstate.options, chips);
-      return { options: options };
+      let models = this.removeElement(oldstate.models, chips);
+      return { models: models };
     });
   };
 
@@ -63,8 +63,7 @@ class ModifierOption extends Component {
     this.setState({
       nom: this.props.obj.nom,
       code: this.props.obj.code,
-      image: this.props.obj.image,
-      options: this.props.obj.listOp
+      models: this.props.obj.listOp
     });
   };
 
@@ -110,25 +109,12 @@ class ModifierOption extends Component {
             onChange={this.handleChangeField}
             fullWidth
           />
-          <TextField
-            InputLabelProps={{
-              shrink: true
-            }}
-            name="image"
-            value={this.state.image}
-            margin="normal"
-            id="image-field"
-            label="image"
-            variant="outlined"
-            fullWidth
-            onChange={this.handleChangeField}
-          />
           <ChipInput
-            name="options"
-            value={this.state.options}
+            name="models"
+            value={this.state.models}
             margin="normal"
             id="modeles-field"
-            label="options"
+            label="models"
             variant="outlined"
             onAdd={chips => this.handleAdd(chips)}
             onDelete={chips => this.handleDelete(chips)}

@@ -23,7 +23,7 @@ class AjouterOption extends Component {
       nom: "",
       code: "",
       image: "",
-      options: ["exemple"]
+      models: ["exemple"]
     };
   }
 
@@ -33,10 +33,10 @@ class AjouterOption extends Component {
 
   handleAdd = chips => {
     this.setState(oldstate => {
-      let options = [...oldstate.options];
-      options.push(chips);
+      let models = [...oldstate.models];
+      models.push(chips);
       //console.log(models);
-      return { options: options };
+      return { models: models };
     });
     console.log(chips);
   };
@@ -47,8 +47,8 @@ class AjouterOption extends Component {
 
   handleDelete = chips => {
     this.setState(oldstate => {
-      let options = this.removeElement(oldstate.options, chips);
-      return { options: options };
+      let models = this.removeElement(oldstate.models, chips);
+      return { models: models };
     });
   };
 
@@ -92,22 +92,12 @@ class AjouterOption extends Component {
             onChange={this.handleChangeField}
             fullWidth
           />
-          <TextField
-            name="hexa"
-            value={this.state.image}
-            margin="normal"
-            id="hexa-field"
-            label="Image"
-            variant="outlined"
-            fullWidth
-            onChange={this.handleChangeField}
-          />
           <ChipInput
-            name="options"
-            value={this.state.options}
+            name="models"
+            value={this.state.models}
             margin="normal"
             id="modeles-field"
-            label="options"
+            label="models"
             variant="outlined"
             onAdd={chips => this.handleAdd(chips)}
             onDelete={chips => this.handleDelete(chips)}
