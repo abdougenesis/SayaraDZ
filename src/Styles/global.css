@@ -110,3 +110,19 @@ html {
 .firstlist:focus {
   background-color: white !important;
 }
+
+.commandeHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #bec3c7b4;
+  align-items: baseline;
+}
+
+.headerTitle2 {
+  margin: 4px 0 15px 60px;
+  color: #636f75;
+  font-weight: 450;
+  font-size: 16px;
+  text-transform: capitalize;
+}
