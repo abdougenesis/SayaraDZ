@@ -7,6 +7,7 @@ import ColorsContainer from "./components/managComponents/ManagColorComps/Colors
 import VersionsContainer from "./components/managComponents/ManagVersionComps/VersionsContainer";
 import OptionsContainer from "./components/managComponents/ManagOptionComps/OptionsContainer";
 import CommandesContainer from "./components/commandesComponents/CommandesContainer";
+import SimulationContainer from "./components/simulationComponents/SimulationContainer";
 //import axios from "axios";
 
 class Application extends Component {
@@ -18,7 +19,8 @@ class Application extends Component {
         {/*<VersionsContainer />*/}
         {/*<ModelsContainer />*/}
         {/*<ColorsContainer />*/}
-        {<CommandesContainer />}
+        {/*<CommandesContainer />*/}
+        {<SimulationContainer />}
       </div>
     );
   }

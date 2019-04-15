@@ -126,3 +126,49 @@ html {
   font-size: 16px;
   text-transform: capitalize;
 }
+
+.simulationHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.simulationPrice {
+  padding-left: 50px;
+}
+
+.simulerOptionsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 25px 10%;
+}
+
+.simulerOptionsTitle {
+  font-size: 20px;
+  font-weight: 420;
+}
+
+.simulationModelImage {
+  margin: 15px;
+  width: 50%;
+}
+
+.simulerModelsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 35px 0;
+}
+
+.simulationModelName {
+  margin: 0;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  border-top: 0.1px solid #c3c9cc;
+}
