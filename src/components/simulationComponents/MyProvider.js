@@ -8,7 +8,10 @@ class MyProvider extends Component {
     this.state = {
       model: "",
       version: "",
-      color: "",
+      color: {
+        color: "",
+        price: 0
+      },
       selectedOptions: [],
       price: 0,
       changePrice: price => {
@@ -19,6 +22,9 @@ class MyProvider extends Component {
           //console.log(newstate);
           return { newstate };
         });
+      },
+      changeColor: (color, price) => {
+        this.setState({ color: { color: color, price: price } });
       }
     };
   }

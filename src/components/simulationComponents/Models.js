@@ -1,4 +1,4 @@
-import React, { Component, version } from "react";
+import React, { Component } from "react";
 import Modelstest from "./../managComponents/ManagModelComps/Modelstest";
 import ModelComp from "./ModelComp";
 import CompImg from "./../../images/carmodel.png";

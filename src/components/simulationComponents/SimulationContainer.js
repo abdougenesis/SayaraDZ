@@ -4,6 +4,7 @@ import SimulationStteper from "./SimulationStteper";
 import Options from "./Options";
 import MyProvider from "./MyProvider";
 import Models from "./Models";
+import Colors from "./Colors";
 
 function SimulationContainer(props) {
   return (
@@ -11,7 +12,7 @@ function SimulationContainer(props) {
       <div className="managIndex">
         <SimulationHeader />
         <SimulationStteper />
-        <Models />
+        <Colors />
       </div>
     </MyProvider>
   );
