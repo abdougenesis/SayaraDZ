@@ -1,29 +1,28 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import StepConnector from "@material-ui/core/StepConnector";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { DriveEta, FilterList, ColorLens } from "@material-ui/icons";
+import { Mycontext } from "./MyProvider";
+import { withRouter } from "react-router-dom";
 
 const styles = theme => ({
   ConnectorRoot: {
-    backgroundColor: "#ADBEC5",
+    backgroundColor: "inherit",
     borderColor: "#ADBEC5",
     margin: 9.5,
     padding: 0.5
   },
   connectorActive: {
     "& $connectorLine": {
-      borderColor: theme.palette.secondary.main
+      borderColor: "#ff782d"
     }
   },
   connectorCompleted: {
     "& $connectorLine": {
-      borderColor: theme.palette.primary.main
+      borderColor: "#ff782d"
     }
   },
   connectorDisabled: {
@@ -41,13 +40,15 @@ const styles = theme => ({
     backgroundColor: "#ff782d",
     borderRadius: "50%",
     padding: 10,
-    color: "#ffffff"
+    color: "#ffffff",
+    cursor: "pointer"
   },
   stepDisabled: {
     backgroundColor: "#ADBEC5",
     borderRadius: "50%",
     padding: 10,
-    color: "#ffffff"
+    color: "#ffffff",
+    cursor: "pointer"
   }
 });
 
@@ -62,16 +63,42 @@ class SimulationStteper extends Component {
   getSteps(classes) {
     return [
       {
+        id: 1,
         title: "Models & versions",
-        icon: <DriveEta classes={{ root: classes.step }} />
+        icon: (
+          <DriveEta
+            classes={{
+              root: classes.step
+            }}
+          />
+        ),
+        to: "models"
       },
       {
+        id: 2,
         title: "Options",
-        icon: <FilterList classes={{ root: classes.stepDisabled }} />
+        icon: (
+          <FilterList
+            classes={{
+              root:
+                this.state.activeStep > 0 ? classes.step : classes.stepDisabled
+            }}
+          />
+        ),
+        to: "options"
       },
       {
+        id: 3,
         title: "Color",
-        icon: <ColorLens classes={{ root: classes.stepDisabled }} />
+        icon: (
+          <ColorLens
+            classes={{
+              root:
+                this.state.activeStep > 1 ? classes.step : classes.stepDisabled
+            }}
+          />
+        ),
+        to: "color"
       }
     ];
   }
@@ -95,26 +122,47 @@ class SimulationStteper extends Component {
 
     return (
       <div>
-        <Stepper
-          className={classes.stepsContainer}
-          alternativeLabel
-          activeStep={activeStep}
-          connector={connector}
-        >
-          {steps.map(label => (
-            <Step
-              key={label.title}
-              onClick={() => {
-                console.log("clicked");
-              }}
+        <Mycontext.Consumer>
+          {context => (
+            <Stepper
+              className={classes.stepsContainer}
+              alternativeLabel
+              activeStep={activeStep}
+              connector={connector}
             >
-              <StepLabel icon={label.icon}>{label.title}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
+              {steps.map(label => (
+                <Step
+                  key={label.title}
+                  onClick={() => {
+                    console.log("clicked");
+                    //console.log(context);
+                    if (label.id === 1) {
+                      if (context.simulationCurrent !== 1) {
+                        context.changeSimCurrent(1);
+                        this.setState({ activeStep: 0 });
+                      }
+                    } else if (label.id === 2) {
+                      if (context.simulationCurrent !== 2) {
+                        context.changeSimCurrent(2);
+                        this.setState({ activeStep: 1 });
+                      }
+                    } else {
+                      if (context.simulationCurrent !== 3) {
+                        context.changeSimCurrent(3);
+                        this.setState({ activeStep: 2 });
+                      }
+                    }
+                  }}
+                >
+                  <StepLabel icon={label.icon}>{label.title}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+          )}
+        </Mycontext.Consumer>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(SimulationStteper);
+export default withRouter(withStyles(styles)(SimulationStteper));

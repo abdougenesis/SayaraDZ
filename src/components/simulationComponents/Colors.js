@@ -80,7 +80,7 @@ class Colors extends Component {
     const allColors = this.state.allColors.map(color => {
       return (
         <ColorComp
-          key={color.code}
+          key={color.Code_Couleur}
           selected={color.selected}
           price={color.prix}
           code={color.Code_Couleur}
@@ -93,7 +93,9 @@ class Colors extends Component {
       <Mycontext.Consumer>
         {context => {
           return (
-            <div>
+            <div
+              className={context.simulationCurrent === 3 ? "visible" : "hidden"}
+            >
               <h2 className="simulerOptionsTitle"> choose your color </h2>
               <div className="carSimulation">
                 {this.SvgCar(context.color.color)}

@@ -3,14 +3,22 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Lens, PanoramaFishEye } from "@material-ui/icons";
+import { withRouter } from "react-router-dom";
 
 function SubListItems(props) {
+  const { history, match } = props;
   return (
     <ListItem
       button
       className={props.classes.sublist}
       selected={props.submenuitem.selected}
-      onClick={() => props.handleSubClick(props.item, props.submenuitem)}
+      onClick={() => {
+        props.handleSubClick(props.item, props.submenuitem);
+        if (!props.submenuitem.selected) {
+          history.push(`${match.url}/${props.to}`);
+          props.handleSubMenu(props.to);
+        }
+      }}
     >
       <ListItemIcon>
         {props.submenuitem.selected ? (
@@ -32,4 +40,4 @@ function SubListItems(props) {
   );
 }
 
-export default SubListItems;
+export default withRouter(SubListItems);

@@ -9,6 +9,7 @@ import {
   Build,
   LibraryBooks
 } from "@material-ui/icons";
+import { withRouter } from "react-router-dom";
 
 const ouricons = {
   wrench: Build,
@@ -19,12 +20,20 @@ const ouricons = {
 
 function ListItems(props) {
   let IconToUse = ouricons[props.icontouse];
+  const { history, match } = props;
   return (
     <ListItem
       button
       key={props.item.title}
       selected={props.item.selected}
-      onClick={() => props.handleClick(props.item.title, props.item.selected)}
+      onClick={() => {
+        props.handleClick(props.item.title, props.item.selected);
+        if (!props.item.selected) {
+          if (props.item.submenu) {
+            history.push(`${match.url}/${props.subDestination}`);
+          } else history.push(`${match.url}/${props.item.to}`);
+        }
+      }}
       classes={{
         root: props.classes.firstlist,
         selected: "firstlist"
@@ -46,4 +55,4 @@ function ListItems(props) {
   );
 }
 
-export default ListItems;
+export default withRouter(ListItems);

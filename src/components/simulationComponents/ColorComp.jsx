@@ -1,7 +1,6 @@
 import React from "react";
 import { Lens, RadioButtonChecked } from "@material-ui/icons";
 import { Mycontext } from "./MyProvider";
-import Button from "@material-ui/core/Button";
 
 export default function ColorComp(props) {
   const style = {

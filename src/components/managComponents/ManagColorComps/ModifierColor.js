@@ -29,7 +29,6 @@ class ModifierColor extends Component {
       hexa: "",
       models: []
     };
-    console.log(this.state);
   }
 
   handleChangeField = event => {
@@ -42,10 +41,8 @@ class ModifierColor extends Component {
     this.setState(oldstate => {
       let models = [...oldstate.models];
       models.push(chips);
-      console.log(models);
       return { models: models };
     });
-    console.log(chips);
   };
 
   removeElement = (array, element) => {

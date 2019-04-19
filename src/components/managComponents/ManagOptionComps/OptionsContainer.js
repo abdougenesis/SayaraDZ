@@ -73,6 +73,7 @@ class OptionsContainer extends Component {
     const ourOptions = this.state.allOptions.map(obj => {
       return (
         <OptionComp
+          key={obj.code}
           code={obj.code}
           nom={obj.nom}
           listOp={obj.listModels}

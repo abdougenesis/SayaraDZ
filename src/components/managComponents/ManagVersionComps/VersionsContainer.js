@@ -75,6 +75,7 @@ class VersionsContainer extends Component {
     const ourVersions = this.state.allVersions.map(obj => {
       return (
         <VersionComp
+          key={obj.code}
           code={obj.code}
           nom={obj.nom}
           listOp={obj.listOptions}

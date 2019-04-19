@@ -6,19 +6,23 @@ const simpleUserList = [
     submenu: [
       {
         title: "gerer model",
-        selected: false
+        selected: true,
+        to: "manag-models"
       },
       {
         title: "gerer version",
-        selected: false
+        selected: false,
+        to: "manag-versions"
       },
       {
         title: "gerer couleur",
-        selected: true
+        selected: false,
+        to: "manag-colors"
       },
       {
         title: "gerer options",
-        selected: false
+        selected: false,
+        to: "manag-options"
       }
     ]
   },
@@ -26,19 +30,22 @@ const simpleUserList = [
     icon: "upload",
     selected: false,
     title: "uploader fichier",
-    submenu: null
+    submenu: null,
+    to: "upload"
   },
   {
     icon: "play",
     selected: false,
     title: "simuler",
-    submenu: null
+    submenu: null,
+    to: "simuler"
   },
   {
     icon: "com",
     selected: false,
     title: "commandes",
-    submenu: null
+    submenu: null,
+    to: "commandes"
   }
 ];
 

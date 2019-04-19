@@ -32,11 +32,11 @@ const styles = theme => ({
   }
 });
 
-let id = 0;
+/*let id = 0;
 function createData(name, calories, fat, carbs, protein) {
   id += 1;
   return { id, name, calories, fat, carbs, protein };
-}
+}*/
 
 class CustomizedTable extends Component {
   constructor() {

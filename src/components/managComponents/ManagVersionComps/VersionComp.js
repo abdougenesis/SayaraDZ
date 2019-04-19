@@ -83,7 +83,7 @@ const styles = theme => ({
 function VersionComp(props) {
   const { classes } = props;
   const ourOptions = props.listOp.map(obj => {
-    return <Chip label={obj} className={classes.chip} />;
+    return <Chip label={obj} key={obj} className={classes.chip} />;
   });
   let object = {
     code: props.code,

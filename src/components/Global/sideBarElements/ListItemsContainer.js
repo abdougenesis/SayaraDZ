@@ -8,22 +8,45 @@ import "./../../../Styles/global.css";
 import styles from "./ListTypes/SimpleUserStyles";
 import ListItems from "./ListItems";
 import SubListItems from "./SubListItems";
+import { withRouter } from "react-router-dom";
 
 class ListItemsContainer extends Component {
   constructor() {
     super();
     this.state = {
       pos: "simpleuser",
-      submenu: true,
-      simpleusers: simpleUserList
+      submenu: false,
+      simpleusers: simpleUserList,
+      subitemDestination: "manag-models"
     };
+  }
+
+  componentDidMount() {
+    const { history, match } = this.props;
+    this.state.simpleusers.map(simpleuser => {
+      if (simpleuser.selected) {
+        if (simpleuser.submenu) {
+          simpleuser.submenu.map(sub => {
+            if (sub.selected) {
+              this.setState({ submenu: true });
+              history.push(`${match.url}/${sub.to}`);
+            }
+            return sub;
+          });
+        } else {
+          this.setState({ submenu: false });
+          history.push(`${match.url}/${simpleuser.to}`);
+        }
+      }
+      return simpleuser;
+    });
   }
 
   handleClick = (targetTitle, istargetselected) => {
     if (!istargetselected) {
       let changesub = this.state.submenu;
       this.setState(state => {
-        console.log(targetTitle);
+        //console.log(targetTitle);
         const updatedSimple = state.simpleusers.map(list => {
           if (targetTitle === list.title) {
             list.selected = !list.selected;
@@ -62,6 +85,10 @@ class ListItemsContainer extends Component {
     }
   };
 
+  selectedSub = destination => {
+    this.setState({ subitemDestination: destination });
+  };
+
   render() {
     const { classes } = this.props;
     const workwith =
@@ -76,7 +103,9 @@ class ListItemsContainer extends Component {
                 classes={classes}
                 submenuitem={submenuitem}
                 item={item}
+                to={submenuitem.to}
                 handleSubClick={this.handleSubClick}
+                handleSubMenu={this.selectedSub}
               />
             );
           })
@@ -89,6 +118,7 @@ class ListItemsContainer extends Component {
             item={item}
             handleClick={this.handleClick}
             classes={classes}
+            subDestination={item.submenu ? this.state.subitemDestination : null}
           />
           {item.submenu ? (
             <Collapse in={this.state.submenu} timeout="auto" unmountOnExit>
@@ -109,4 +139,4 @@ class ListItemsContainer extends Component {
   }
 }
 
-export default withStyles(styles)(ListItemsContainer);
+export default withRouter(withStyles(styles)(ListItemsContainer));

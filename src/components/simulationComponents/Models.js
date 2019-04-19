@@ -3,6 +3,7 @@ import Modelstest from "./../managComponents/ManagModelComps/Modelstest";
 import ModelComp from "./ModelComp";
 import CompImg from "./../../images/carmodel.png";
 import VersionTest from "./../managComponents/ManagVersionComps/VersionTest";
+import { Mycontext } from "./MyProvider";
 
 class Models extends Component {
   constructor() {
@@ -85,12 +86,18 @@ class Models extends Component {
       );
     });
     return (
-      <div>
-        <h2 className="simulerOptionsTitle"> choose your model </h2>
-        <div className="simulerModelsContainer">{allmodels}</div>
-        <h2 className="simulerOptionsTitle"> choose your version {} </h2>
-        <div className="simulerModelsContainer">{allVersion}</div>
-      </div>
+      <Mycontext.Consumer>
+        {context => (
+          <div
+            className={context.simulationCurrent === 1 ? "visible" : "hidden"}
+          >
+            <h2 className="simulerOptionsTitle"> choose your model </h2>
+            <div className="simulerModelsContainer">{allmodels}</div>
+            <h2 className="simulerOptionsTitle"> choose your version {} </h2>
+            <div className="simulerModelsContainer">{allVersion}</div>
+          </div>
+        )}
+      </Mycontext.Consumer>
     );
   }
 }

@@ -11,7 +11,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import CardMedia from "@material-ui/core/CardMedia";
 
 const styles = theme => ({
   root: {
@@ -83,7 +82,7 @@ const styles = theme => ({
 function OptionComp(props) {
   const { classes } = props;
   const ourOptions = props.listOp.map(obj => {
-    return <Chip label={obj} className={classes.chip} />;
+    return <Chip label={obj} key={obj} className={classes.chip} />;
   });
   let object = {
     code: props.code,

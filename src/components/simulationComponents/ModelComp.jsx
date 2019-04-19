@@ -45,6 +45,7 @@ class ModelComp extends Component {
               elevation={1}
               onClick={() => {
                 this.props.handleClick(this.props.code, this.props.selected);
+
                 if (this.props.version)
                   this.props.selected
                     ? context.changePrice(0)
@@ -55,7 +56,7 @@ class ModelComp extends Component {
                 <img
                   className="simulationModelImage"
                   src={this.props.img}
-                  alt="model image"
+                  alt="model"
                 />
                 <h3 className="simulationModelName">{this.props.nom}</h3>
               </CardActionArea>

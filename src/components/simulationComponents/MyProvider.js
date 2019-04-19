@@ -6,6 +6,7 @@ class MyProvider extends Component {
   constructor() {
     super();
     this.state = {
+      simulationCurrent: 1,
       model: "",
       version: "",
       color: {
@@ -14,6 +15,9 @@ class MyProvider extends Component {
       },
       selectedOptions: [],
       price: 0,
+      changeSimCurrent: number => {
+        this.setState({ simulationCurrent: number });
+      },
       changePrice: price => {
         //console.log("hanniiii");
         this.setState(state => {
