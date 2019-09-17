@@ -1,7 +1,7 @@
 const simpleUserList = [
   {
     icon: "wrench",
-    selected: true,
+    selected: false,
     title: "geree donnees",
     submenu: [
       {
@@ -30,8 +30,18 @@ const simpleUserList = [
     icon: "upload",
     selected: false,
     title: "uploader fichier",
-    submenu: null,
-    to: "upload"
+    submenu: [
+      {
+        title: "fichier stock",
+        selected: false,
+        to: "upload"
+      },
+      {
+        title: "fichier tarif",
+        selected: false,
+        to: "uploadTarif"
+      }
+    ]
   },
   {
     icon: "play",
@@ -42,10 +52,32 @@ const simpleUserList = [
   },
   {
     icon: "com",
-    selected: false,
+    selected: true,
     title: "commandes",
-    submenu: null,
-    to: "commandes"
+    submenu: [
+      {
+        title: "en cours",
+        selected: true,
+        to: "commandes"
+      },
+      {
+        title: "valider",
+        selected: false,
+        to: "commandes-valider"
+      }
+      // {
+      //   title: "regeter",
+      //   selected: false,
+      //   to: "commandes-regeter"
+      // }
+    ]
+    //to: "commandes"
+  },
+  {
+    icon: "logout",
+    selected: false,
+    title: "Deconnection",
+    submenu: null
   }
 ];
 

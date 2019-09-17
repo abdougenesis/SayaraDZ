@@ -7,7 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import FakeCommandes from "./FakeCommandes";
+
 import TableRowComande from "./TableRowComande";
 import WarningDialog from "./WarningDialog";
 
@@ -39,10 +39,10 @@ function createData(name, calories, fat, carbs, protein) {
 }*/
 
 class CustomizedTable extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      listCommandes: FakeCommandes,
+      //listCommandes: props.fakeCommandes,
       openWarningDialog: false,
       deleterow: {},
       option: ""
@@ -63,22 +63,22 @@ class CustomizedTable extends Component {
     });
   };
 
-  handleOption = () => {
-    // do the call to the api for both the options
-    if (this.state.option === "valider") {
-      console.log("valider commande");
-    } else {
-      console.log("regeter commande");
-    }
-    // delete the commande from the table
-    this.setState(oldstate => {
-      const newlist = oldstate.listCommandes.filter(obj => {
-        return obj.vehicule !== this.state.deleterow.vehicule;
-      });
-      //console.log(newlist.length);
-      return { listCommandes: newlist };
-    });
-  };
+  // handleOption = () => {
+  //   // do the call to the api for both the options
+  //   if (this.state.option === "valider") {
+  //     console.log("valider commande");
+  //   } else {
+  //     console.log("regeter commande");
+  //   }
+  //   // delete the commande from the table
+  //   this.setState(oldstate => {
+  //     const newlist = oldstate.listCommandes.filter(obj => {
+  //       return obj.vehicule !== this.state.deleterow.vehicule;
+  //     });
+  //     //console.log(newlist.length);
+  //     return { listCommandes: newlist };
+  //   });
+  // };
 
   render() {
     const { classes } = this.props;
@@ -88,9 +88,9 @@ class CustomizedTable extends Component {
         <Table className={classes.table}>
           {this.createTableHead()}
           <TableBody>
-            {this.state.listCommandes.map(row => (
+            {this.props.fakeCommandes.map((row, index) => (
               <TableRowComande
-                key={row.id}
+                key={index}
                 obj={row}
                 handleChoice={this.handleChoice}
               />
@@ -100,9 +100,10 @@ class CustomizedTable extends Component {
         <WarningDialog
           open={this.state.openWarningDialog}
           handleClose={this.handleCloseDialog}
-          handleOption={this.handleOption}
+          handleOption={this.props.handleOption}
           obj={this.state.deleterow}
           method={this.state.option}
+          deleterow={this.state.deleterow}
         />
       </Paper>
     );
@@ -112,6 +113,7 @@ class CustomizedTable extends Component {
     return (
       <TableHead>
         <TableRow>
+          <CustomTableCell>n commande</CustomTableCell>
           <CustomTableCell>Automobiliste</CustomTableCell>
           <CustomTableCell align="right">vehicule</CustomTableCell>
           <CustomTableCell align="right">montant</CustomTableCell>

@@ -94,7 +94,7 @@ class ColorsContainer extends Component {
       Colore: obj.models
     };
 
-    obj.sub = false;
+    object.sub = false;
     this.setState(oldState => {
       let allC = oldState.allColors.map(color => {
         return color.Code_Couleur === obj.code ? object : color;

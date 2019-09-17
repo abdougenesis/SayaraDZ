@@ -6,10 +6,13 @@ import OptionsContainer from "./managComponents/ManagOptionComps/OptionsContaine
 import CommandesContainer from "./commandesComponents/CommandesContainer";
 import SimulationContainer from "./simulationComponents/SimulationContainer";
 import UploadContainer from "./UploadComponents/UploadContainer";
+import ValideCommandeContainer from "./commandesComponents/ValideCommandeContainer";
+import UploadStock from "./UploadComponents/UploadStock";
 import styled from "styled-components";
 
 import { Route /*, Link*/, Switch, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Models from "./simulationComponents/Models";
 
 function AppRouteContainer({ location }) {
   return (
@@ -32,6 +35,10 @@ function AppRouteContainer({ location }) {
               />
               <Route
                 path="/Application/upload"
+                render={() => <UploadStock />}
+              />
+              <Route
+                path="/Application/uploadTarif"
                 render={() => <UploadContainer />}
               />
               <Route
@@ -49,6 +56,10 @@ function AppRouteContainer({ location }) {
               <Route
                 path="/Application/manag-models"
                 render={() => <ModelsContainer />}
+              />
+              <Route
+                path="/Application/commandes-valider"
+                render={() => <ValideCommandeContainer />}
               />
             </Switch>
           </section>

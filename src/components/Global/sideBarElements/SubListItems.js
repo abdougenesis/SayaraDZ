@@ -13,8 +13,10 @@ function SubListItems(props) {
       className={props.classes.sublist}
       selected={props.submenuitem.selected}
       onClick={() => {
+        //console.log("rani fi subliste");
         props.handleSubClick(props.item, props.submenuitem);
         if (!props.submenuitem.selected) {
+          //console.log("dkhelt nrml ");
           history.push(`${match.url}/${props.to}`);
           props.handleSubMenu(props.to);
         }
@@ -28,7 +30,6 @@ function SubListItems(props) {
         )}
       </ListItemIcon>
       <ListItemText
-        inset
         primary={props.submenuitem.title}
         classes={{
           primary: props.submenuitem.selected

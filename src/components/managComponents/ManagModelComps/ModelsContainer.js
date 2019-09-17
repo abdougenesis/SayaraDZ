@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ModelComp from "./ModelComp";
 import "./../ManagStyles.css";
-import axios from "axios";
+import axiosDef from "./../../loginComponents/axiosDef";
 import Modelimage from "./../../../images/vwModele.jpg";
 import WarningDialog from "./WarningDialog";
 import ModifierModele from "./ModifierModele";
@@ -18,33 +18,34 @@ import ModelsTest from "./Modelstest";
 //    "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
 // };
 
-axios.default.crossDomain = true;
+//axios.default.crossDomain = true;
 
 class ModelsContainer extends Component {
   constructor() {
     super();
     this.state = {
-      allModels: ModelsTest,
+      allModels: [],
       openWarningDialog: false,
       openModifierDialog: false,
       openAddDialog: false,
-      modifObject: {}
+      modifObject: {},
+      deleteObject: {}
     };
     this.handleOpenDeleteModele = this.handleOpenDeleteModele.bind(this);
   }
 
-  /*componentDidMount() {
-    axios
-      .get("http://78d9ab04.ngrok.io/modele/")
+  componentDidMount() {
+    axiosDef
+      .get(`/modele/${localStorage.getItem("marque")}`)
       .then(res => res.data)
       .then(data => {
         this.setState({ allModels: data });
         console.log(this.state.allModels);
       });
-  }*/
+  }
 
-  handleOpenDeleteModele() {
-    this.setState({ openWarningDialog: true });
+  handleOpenDeleteModele(obj) {
+    this.setState({ openWarningDialog: true, deleteObject: obj });
   }
 
   handleCloseDeleteModele = () => {
@@ -66,17 +67,96 @@ class ModelsContainer extends Component {
     this.setState({ openAddDialog: false });
   };
 
+  handleAddModel = obj => {
+    let object = {
+      Code_Modele: obj.code,
+      Nom_Modele: obj.name,
+      Id_Marque: localStorage.getItem("marque")
+    };
+    // add put request here
+    axiosDef
+      .post("/modele/new", object)
+      .then(resp => {
+        console.log(resp);
+        if (resp.status === 201) return Promise.resolve(resp);
+        else return Promise.reject(resp);
+      })
+      .then(resp => {
+        this.setState(oldState => {
+          let allModels = [...oldState.allModels];
+          allModels.push(object);
+          //console.log(allC);
+          return { allModels: allModels };
+        });
+      })
+      .catch(err => {
+        console.log("error");
+        alert("an error uccured , please try again");
+      });
+  };
+
+  handleModifierModel = obj => {
+    // let object = {
+    //   Code_Modele: obj.code,
+    //   Nom_Modele: obj.name,
+    //   Id_Marque: "mm1"
+    // };
+
+    //console.log(object);
+    axiosDef
+      .patch(`/modele/update/${obj.code}/${obj.name}`)
+      .then(resp => {
+        console.log(resp);
+        if (resp.status === 200) return Promise.resolve(resp);
+        else return Promise.reject(resp);
+      })
+      .then(resp => {
+        this.setState(oldState => {
+          let allModels = oldState.allModels.map(model => {
+            return model.Code_Modele === obj.code ? resp.data : model;
+          });
+          return { allModels: allModels };
+        });
+      });
+  };
+
+  handleDeleteModel = obj => {
+    axiosDef
+      .post("/modele/delete", { Code_Modele: obj.code })
+      .then(resp => {
+        console.log(resp);
+        if (resp.status === 201) return Promise.resolve(resp);
+        else return Promise.reject(resp);
+      })
+      .then(resp => {
+        this.setState(oldState => {
+          //console.log(obj);
+          let allModels = oldState.allModels.filter(model => {
+            return model.Code_Modele !== obj.code;
+          });
+          return { allModels: allModels };
+        });
+      })
+      .catch(err => {
+        console.log("error");
+        alert("an error uccured , please try again");
+      });
+  };
+
   render() {
-    const models = this.state.allModels.map(model => (
-      <ModelComp
-        key={model.Code_Modele}
-        code={model.Code_Modele}
-        name={model.Nom_Modele}
-        img={Modelimage}
-        handleDelete={this.handleOpenDeleteModele}
-        handleModif={this.handleOpenModifierModele}
-      />
-    ));
+    const models = this.state.allModels.map(model => {
+      //console.log(model.Code_Modele);
+      return (
+        <ModelComp
+          key={model.Code_Modele}
+          code={model.Code_Modele}
+          name={model.Nom_Modele}
+          img={Modelimage}
+          handleDelete={this.handleOpenDeleteModele}
+          handleModif={this.handleOpenModifierModele}
+        />
+      );
+    });
     //return <div className="modelsContainer">{models}</div>;
     return (
       <div className="managIndex">
@@ -84,6 +164,8 @@ class ModelsContainer extends Component {
         <div className="modelsContainer">
           {models}
           <WarningDialog
+            handleDeleteModel={this.handleDeleteModel}
+            obj={this.state.deleteObject}
             open={this.state.openWarningDialog}
             handleClose={this.handleCloseDeleteModele}
           />
@@ -93,10 +175,12 @@ class ModelsContainer extends Component {
             name="test11"
             code="code11"
             obj={this.state.modifObject}
+            handleModifierModel={this.handleModifierModel}
           />
           <AddDialog
             open={this.state.openAddDialog}
             handleClose={this.handleCloseAddModele}
+            handleAddModel={this.handleAddModel}
           />
         </div>
       </div>

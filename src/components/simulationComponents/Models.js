@@ -4,27 +4,47 @@ import ModelComp from "./ModelComp";
 import CompImg from "./../../images/carmodel.png";
 import VersionTest from "./../managComponents/ManagVersionComps/VersionTest";
 import { Mycontext } from "./MyProvider";
+import axiosDef from "./../loginComponents/axiosDef";
 
 class Models extends Component {
   constructor() {
     super();
     this.state = {
-      allModels: Modelstest,
+      allModels: [],
       allVersion: [],
       modelSelected: false
     };
   }
 
   componentDidMount() {
-    const myModels = Modelstest.map(model => {
-      model.selected = false;
-      return model;
-    });
-    const myVersions = this.state.allVersion.map(version => {
-      version.selected = false;
-      return version;
-    });
-    this.setState({ allModels: myModels, allVersion: myVersions });
+    axiosDef
+      .get(`/modele/${localStorage.getItem("marque")}`)
+      .then(res => res.data)
+      .then(data => {
+        this.setState({ allModels: data });
+        console.log(this.state.allModels);
+      })
+      .then(res => {
+        axiosDef
+          .get(`/version/marque/${localStorage.getItem("marque")}`)
+          .then(res => res.data)
+          .then(data => {
+            this.setState({ allVersion: data });
+            console.log(this.state.allVersions);
+          });
+        return Promise.resolve(res);
+      })
+      .then(res => {
+        const myModels = this.state.allModels.map(model => {
+          model.selected = false;
+          return model;
+        });
+        const myVersions = this.state.allVersion.map(version => {
+          version.selected = false;
+          return version;
+        });
+        this.setState({ allModels: myModels, allVersion: myVersions });
+      });
   }
 
   handleModelClick = (code, isTargetSelected) => {
@@ -33,13 +53,21 @@ class Models extends Component {
         const newModels = oldState.allModels.map(model => {
           if (code === model.Code_Modele) model.selected = true;
           else model.selected = false;
+
           return model;
         });
+
         return {
-          allModels: newModels,
-          allVersion: VersionTest
+          allModels: newModels
         };
       });
+      axiosDef
+        .get(`/version/${code}`)
+        .then(res => res.data)
+        .then(data => {
+          this.setState({ allVersion: data });
+          console.log(this.state.allVersions);
+        });
     }
   };
 
@@ -76,12 +104,12 @@ class Models extends Component {
         <ModelComp
           version={true}
           selected={version.selected}
-          key={version.code}
-          nom={version.nom}
-          code={version.code}
+          key={version.Code_Version}
+          nom={version.Nom_Version}
+          code={version.Code_Version}
           img={CompImg}
           handleClick={this.handleVersionClick}
-          price={version.prix}
+          price={1200}
         />
       );
     });

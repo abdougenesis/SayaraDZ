@@ -94,6 +94,9 @@ class TableRowComande extends Component {
     return (
       <TableRow className={classes.row} key={this.props.obj.id}>
         <CustomTableCell component="th" scope="row">
+          {this.props.obj.pk}
+        </CustomTableCell>
+        <CustomTableCell align="right">
           {this.props.obj.automobiliste}
         </CustomTableCell>
         <CustomTableCell align="right">

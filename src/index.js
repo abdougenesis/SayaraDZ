@@ -11,6 +11,7 @@ import Application from "./Application";
 import * as serviceWorker from "./serviceWorker";
 import LoginComp from "./components/loginComponents/LoginComp";
 import Notfound from "./components/Notfound";
+import Admin from "./Admin";
 import "./FontLibrary";
 
 const routing = (
@@ -18,6 +19,7 @@ const routing = (
     <Switch>
       <Route exact path="/" component={App} />
       <Route path="/Application" component={Application} />
+      <Route path="/admin" component={Admin} />
       <Route path="/login" component={LoginComp} />
       <Route component={Notfound} />
     </Switch>

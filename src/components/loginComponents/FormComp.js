@@ -4,8 +4,11 @@ import Logo from "../../images/sayara.png";
 import SigninButton from "./SigninButton";
 import "../../Styles/Signin.css";
 import AuthService from "./AuthService";
+import { withRouter } from "react-router-dom";
+import axiosDef from "./axiosDef";
 
 class FormComp extends Component {
+  Auth = null;
   constructor(props) {
     super(props);
     this.state = {
@@ -26,13 +29,22 @@ class FormComp extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.Auth.login(this.state.username, this.state.password)
+    this.Auth.login(this.state.email, this.state.password)
       .then(res => {
-        this.props.history.replace("/");
+        if (localStorage.getItem("typeUser") === "Administrateur Fabriquant")
+        this.props.history.replace("/admin");
+        else this.props.history.replace("/Application")
       })
       .catch(err => {
-        alert(err);
+        console.log("erreur yab9a fla page");
+        this.setState({
+          email: "",
+          password: ""
+        });
+        //alert(err);
       });
+    /*const { history, match } = this.props;
+    history.replace("/Application");*/
   }
 
   render() {
@@ -60,4 +72,4 @@ class FormComp extends Component {
   }
 }
 
-export default FormComp;
+export default withRouter(FormComp);

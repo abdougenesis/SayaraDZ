@@ -55,9 +55,39 @@ class OptionsContainer extends Component {
     this.setState({ openAddDialog: false });
   };
 
-  handleAddOption = obj => {};
+  handleAddOption = obj => {
+    let object = {
+      code: obj.code,
+      nom: obj.nom,
+      listModels: obj.models,
+      prix: 200
+    };
+    // add put request here
+    object.sub = false;
+    this.setState(oldState => {
+      let allOptions = [...oldState.allOptions];
+      allOptions.push(object);
+      //console.log(allC);
+      return { allOptions: allOptions };
+    });
+  };
 
-  handleModifierOption = obj => {};
+  handleModifierOption = obj => {
+    let object = {
+      code: obj.code,
+      nom: obj.nom,
+      listModels: obj.models,
+      prix: 200
+    };
+
+    object.sub = false;
+    this.setState(oldState => {
+      let allOptions = oldState.allOptions.map(option => {
+        return option.code === obj.code ? object : option;
+      });
+      return { allOptions: allOptions };
+    });
+  };
 
   handleDeleteOption = obj => {
     this.setState(oldState => {

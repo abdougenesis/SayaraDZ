@@ -58,7 +58,10 @@ class WarningDialog extends Component {
           <Button
             onClick={() => {
               this.props.handleClose();
-              this.props.handleOption();
+              this.props.handleOption(
+                this.props.deleterow.pk,
+                this.props.method
+              );
             }}
             color="primary"
           >

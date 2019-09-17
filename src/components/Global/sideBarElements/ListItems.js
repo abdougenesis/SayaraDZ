@@ -7,7 +7,10 @@ import {
   PlayCircleFilled,
   Publish,
   Build,
-  LibraryBooks
+  LibraryBooks,
+  StoreMallDirectory,
+  AddCircleOutline,
+  NoMeetingRoom
 } from "@material-ui/icons";
 import { withRouter } from "react-router-dom";
 
@@ -15,11 +18,14 @@ const ouricons = {
   wrench: Build,
   play: PlayCircleFilled,
   upload: Publish,
-  com: LibraryBooks
+  com: LibraryBooks,
+  home: StoreMallDirectory,
+  addcircle: AddCircleOutline,
+  logout: NoMeetingRoom
 };
 
 function ListItems(props) {
-  let IconToUse = ouricons[props.icontouse];
+  const IconToUse = ouricons[props.icontouse];
   const { history, match } = props;
   return (
     <ListItem
@@ -43,7 +49,6 @@ function ListItems(props) {
         <IconToUse classes={{ root: props.classes.icons }} />
       </ListItemIcon>
       <ListItemText
-        inset
         primary={props.item.title}
         classes={{
           primary: props.item.selected

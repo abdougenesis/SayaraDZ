@@ -5,7 +5,7 @@ const colorsList = [
     Hex_Couleur: "ff782d",
     Colore: ["modele1", "modele2"],
     sub: false,
-    prix: 100
+    prix: 35000
   },
   {
     Code_Couleur: "c2",
@@ -13,7 +13,7 @@ const colorsList = [
     Hex_Couleur: "00d1cd",
     Colore: ["modele1", "modele2"],
     sub: false,
-    prix: 200
+    prix: 35000
   },
   {
     Code_Couleur: "c3",
@@ -21,7 +21,7 @@ const colorsList = [
     Hex_Couleur: "f9fd50",
     Colore: ["modele1", "modele2", "modele3"],
     sub: false,
-    prix: 300
+    prix: 35000
   },
   {
     Code_Couleur: "c4",
@@ -29,7 +29,7 @@ const colorsList = [
     Hex_Couleur: "000000",
     Colore: ["modele1"],
     sub: false,
-    prix: 400
+    prix: 35000
   }
 ];
 

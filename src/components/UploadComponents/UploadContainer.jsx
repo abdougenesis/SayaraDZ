@@ -12,20 +12,6 @@ export default function UploadContainer(props) {
     <div className="managIndex">
       <UploadHeader />
       <div className="uploadTextDragContainer">
-        <div className="uploadText">
-          <h3>Uploader fichier stock</h3>
-          <div>
-            Upload de la liste des véhicules actuellement disponibles. Ce
-            fichier est au format CSV et contient les informations telles que
-            numéro de châssis, version et options
-          </div>
-        </div>
-
-        <DragAndDrop handleDrop={handleDrop}>
-          <DragComp />
-        </DragAndDrop>
-      </div>
-      <div className="uploadTextDragContainer">
         <DragAndDrop handleDrop={handleDrop}>
           <DragComp />
         </DragAndDrop>

@@ -40,6 +40,7 @@ function ModelComp(props) {
     name: props.name,
     code: props.code
   };
+
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -61,7 +62,10 @@ function ModelComp(props) {
         <CardActions className={classes.cardActions}>
           <Button
             className={classes.button}
-            onClick={() => props.handleDelete()}
+            onClick={() => {
+              console.log(object);
+              props.handleDelete(object);
+            }}
           >
             <DeleteIcon />
           </Button>

@@ -9,7 +9,7 @@ class Application extends Component {
   render() {
     return (
       <div className="fullpage">
-        <SideBar />
+        <SideBar simpleuser={true} />
         <AppRouteContainer />
       </div>
     );

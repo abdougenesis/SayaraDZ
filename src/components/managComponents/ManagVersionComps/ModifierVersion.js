@@ -97,19 +97,7 @@ class ModifierColor extends Component {
             onChange={this.handleChangeField}
             fullWidth
           />
-          <TextField
-            InputLabelProps={{
-              shrink: true
-            }}
-            name="code"
-            value={this.state.code}
-            margin="normal"
-            id="code-field"
-            label="Code"
-            variant="outlined"
-            onChange={this.handleChangeField}
-            fullWidth
-          />
+
           <TextField
             InputLabelProps={{
               shrink: true

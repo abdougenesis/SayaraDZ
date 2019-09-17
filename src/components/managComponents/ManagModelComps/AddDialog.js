@@ -63,7 +63,13 @@ class AjouterModele extends Component {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.props.handleClose} color="primary">
+          <Button
+            onClick={() => {
+              this.props.handleClose();
+              this.props.handleAddModel(this.state);
+            }}
+            color="primary"
+          >
             ajouter
           </Button>
           <Button onClick={this.props.handleClose} color="primary">

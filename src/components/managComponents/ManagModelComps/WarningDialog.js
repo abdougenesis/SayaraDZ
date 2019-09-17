@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -11,34 +11,54 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-function WarningDialog(props) {
-  return (
-    <Dialog
-      open={props.open}
-      TransitionComponent={Transition}
-      keepMounted
-      onClose={props.handleClose}
-      aria-labelledby="alert-dialog-slide-title"
-      aria-describedby="alert-dialog-slide-description"
-    >
-      <DialogTitle id="alert-dialog-slide-title">
-        {"etes vous sure de supprimer ce modele?"}
-      </DialogTitle>
-      <DialogContent>
-        <DialogContentText id="alert-dialog-slide-description">
-          supprimer ce modele en clickent sur supprimer sinon annuler
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={props.handleClose} color="primary">
-          annuler
-        </Button>
-        <Button onClick={props.handleClose} color="primary">
-          supprimer
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
+class WarningDialog extends Component {
+  constructor() {
+    super();
+    this.state = {
+      code: ""
+    };
+  }
+
+  handleEnter = () => {
+    console.log(this.props.obj);
+    this.setState(this.props.obj);
+  };
+  render() {
+    return (
+      <Dialog
+        open={this.props.open}
+        TransitionComponent={Transition}
+        keepMounted
+        onEntered={this.handleEnter}
+        onClose={this.props.handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">
+          {"etes vous sure de supprimer ce modele?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            supprimer ce modele en clickent sur supprimer sinon annuler
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.props.handleClose} color="primary">
+            annuler
+          </Button>
+          <Button
+            onClick={() => {
+              this.props.handleClose();
+              this.props.handleDeleteModel(this.state);
+            }}
+            color="primary"
+          >
+            supprimer
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
 }
 
 export default WarningDialog;

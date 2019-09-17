@@ -59,22 +59,18 @@ class ModifierModele extends Component {
             fullWidth
             onChange={this.handleChangeField}
           />
-          <TextField
-            margin="normal"
-            id="code-field"
-            name="code"
-            label="Code"
-            value={this.state.code}
-            variant="outlined"
-            fullWidth
-            onChange={this.handleChangeField}
-          />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.props.handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={this.props.handleClose} color="primary">
+          <Button
+            onClick={() => {
+              this.props.handleClose();
+              this.props.handleModifierModel(this.state);
+            }}
+            color="primary"
+          >
             modifier
           </Button>
         </DialogActions>

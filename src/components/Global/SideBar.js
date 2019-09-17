@@ -8,8 +8,10 @@ class SideBar extends Component {
     return (
       <div className="sidebar">
         <h2 className="sitetitle">sayara dz</h2>
+        <h2 className="userFunction">fabricant renault</h2>
         <UserPic />
-        <ListItemsContainer />
+        <h2 className="userFunction">Khaldi Abderraouf</h2>
+        <ListItemsContainer simpleuser={this.props.simpleuser} />
       </div>
     );
   }
