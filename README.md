@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## SayaraDZ
 
-## Available Scripts
+this project was made with react and material design, and it was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
+the project consist of a web platform for selling, buying and managing cars (old and new cars).
 
-### `npm start`
+it is devised into two sides, the admin side and the client side.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+the admin can manage cars, options, marks, and all kind of parameters for cars, and he can also define some sub admins per categories or by affiliation.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+for the client side, he can search cars while using some filters and he can live simulate options and cars customization.
 
-### `npm test`
+## How does the project looks like ?
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Auth :** 
 
-### `npm run build`
+![](./images/login.png)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Home :**
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![](./images/home.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Managing manufacturers :** 
 
-### `npm run eject`
+![](./images/managingFabricants.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Profile :** 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![]()![profile](./images/profile.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **Upload :** 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![](./images/upload.png)
 
-## Learn More
+- **Simulation :** 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![](./images/simulation1.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![](./images/simulation2.png)
 
-### Code Splitting
+![](./images/simulation3.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+and many other screens ... 
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
